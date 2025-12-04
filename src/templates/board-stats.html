@@ -1,14 +1,30 @@
-<!-- BOARD STATS -->
+<!-- BOARD STATS
+     Jcink variables: total_users, total_guests, total_mems,
+     total_posts, total_mem_reg, newest_member
+-->
 
-<div class="tw-board-stats">
-  <div class="tw-board-stats-header">Board Statistics</div>
+<div class="tableborder tw-board-stats" id="boardstats">
+  <div class="maintitle tw-board-stats-header">Board Statistics</div>
   <div class="tw-board-stats-body">
-    <div class="tw-stats-online">
-      <strong><!-- |active_users| --></strong> user(s) active in the past <!-- |active_time| --> minutes
+    <div class="tw-stats-active pformstrip">
+      <!-- |total_users| --> user(s) active in the past 15 minutes
     </div>
-    <!-- |online_list| -->
-    <div class="tw-stats-legend">
-      <!-- |group_legend| -->
+    <div class="tw-stats-breakdown row4">
+      Active: <strong><!-- |total_guests| --></strong> guests, <strong><!-- |total_mems| --></strong> members
+    </div>
+    <div class="tw-stats-totals row4">
+      <div class="tw-stat-item">
+        <span class="tw-stat-label">Total Posts</span>
+        <span class="tw-stat-value"><!-- |total_posts| --></span>
+      </div>
+      <div class="tw-stat-item">
+        <span class="tw-stat-label">Members</span>
+        <span class="tw-stat-value"><!-- |total_mem_reg| --></span>
+      </div>
+      <div class="tw-stat-item">
+        <span class="tw-stat-label">Newest</span>
+        <span class="tw-stat-value"><!-- |newest_member| --></span>
+      </div>
     </div>
   </div>
 </div>

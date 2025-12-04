@@ -1,0 +1,22 @@
+<!-- SUBFORUM HEADERS
+     Jcink variables: forum_id
+     Required: <% FORUM_ROWS %> macro for subforums to display
+-->
+
+<!-- |start| -->
+<div class="tableborder tw-subforum-list" id="subforum-<!-- |forum_id| -->">
+  <div class="tw-subforum-header titlemedium">
+    Subforums
+  </div>
+  <div class="tw-subforum-subheader catbg">
+    <span class="tw-col-icon"></span>
+    <span class="tw-col-forum">Forum</span>
+    <span class="tw-col-topics">Topics</span>
+    <span class="tw-col-replies">Replies</span>
+    <span class="tw-col-lastpost">Last Post Info</span>
+  </div>
+  <div class="tw-subforum-body">
+    <% FORUM_ROWS %>
+<!-- |end| -->
+  </div>
+</div>

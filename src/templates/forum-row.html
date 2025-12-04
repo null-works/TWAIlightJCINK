@@ -1,15 +1,25 @@
-<!-- FORUM ROW -->
+<!-- FORUM ROW
+     Jcink variables: forum_id, name_text, description, description_clean,
+     img_new_post, topics, replies, last_post, last_poster,
+     subforums, moderators, forum-new-post (class)
+-->
 
-<div class="tw-forum-row">
+<div class="tw-forum-row <!-- |forum-new-post| -->" id="forum-<!-- |forum_id| -->">
+  <div class="tw-forum-icon">
+    <!-- |img_new_post| -->
+  </div>
   <div class="tw-forum-info">
     <div class="tw-forum-title">
-      <a href="<!-- |forum_url| -->"><!-- |forum_name| --></a>
+      <a href="?showforum=<!-- |forum_id| -->"><!-- |name_text| --></a>
     </div>
-    <div class="tw-forum-desc"><!-- |forum_desc| --></div>
+    <div class="tw-forum-desc"><!-- |description| --></div>
+    <div class="tw-forum-subforums"><!-- |subforums| --></div>
+    <div class="tw-forum-mods"><!-- |moderators| --></div>
   </div>
-  <div class="tw-forum-stats"><!-- |topics| --></div>
-  <div class="tw-forum-stats"><!-- |replies| --></div>
+  <div class="tw-forum-stats tw-forum-topics"><!-- |topics| --></div>
+  <div class="tw-forum-stats tw-forum-replies"><!-- |replies| --></div>
   <div class="tw-forum-lastpost">
-    <!-- |last_post| -->
+    <!-- |last_post| --><br>
+    By: <!-- |last_poster| -->
   </div>
 </div>
