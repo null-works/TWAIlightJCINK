@@ -561,48 +561,85 @@ textarea {
 
 /* Table Styles */
 .tableborder {
-  background: rgba(var(--tw-paper), 0.7);
-  border: var(--tw-border-thin);
-  margin-bottom: var(--tw-space-md);
+  background: rgba(var(--tw-paper), 0.85);
+  border: var(--tw-border-comic);
+  margin-bottom: var(--tw-space-lg);
   overflow: hidden;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
 }
 
 .tablefill, .tablepad {
   padding: var(--tw-space-md);
 }
 
-.row1 { background: rgb(var(--tw-paper)); padding: var(--tw-space-sm) var(--tw-space-md); }
-.row2 { background: rgb(var(--tw-paper-alt)); padding: var(--tw-space-sm) var(--tw-space-md); }
-.row3, .row4 { background: rgb(var(--tw-paper-dark)); padding: var(--tw-space-sm) var(--tw-space-md); }
+.row1 { background: rgb(var(--tw-paper)); }
+.row2 { background: rgb(var(--tw-paper-alt)); }
+.row3, .row4 { background: rgb(var(--tw-paper-dark)); }
+
+.row1, .row2, .row3, .row4 {
+  padding: var(--tw-space-md);
+  border-bottom: 1px solid rgba(var(--tw-ink), 0.1);
+}
 
 .darkrow1, .darkrow2, .darkrow3 {
   background: rgba(var(--tw-ink), 0.05);
   padding: var(--tw-space-sm) var(--tw-space-md);
 }
 
+/* Category Header */
 .maintitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: var(--tw-font-comic);
   font-size: var(--tw-text-lg);
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: rgb(var(--tw-paper));
-  background: rgb(var(--tw-ink));
-  padding: var(--tw-space-md);
+  color: rgb(var(--tw-accent-1));
+  background: rgb(var(--tw-paper-alt));
+  padding: var(--tw-space-md) var(--tw-space-lg);
   border-bottom: var(--tw-border-thin);
   position: relative;
+}
+
+.maintitle a {
+  color: rgb(var(--tw-accent-1));
 }
 
 .maintitle::after {
   content: "";
   position: absolute;
-  bottom: -6px;
-  left: 20px;
+  bottom: -8px;
+  left: 30px;
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 6px solid rgb(var(--tw-ink));
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid rgb(var(--tw-paper-alt));
+}
+
+/* Category Subheader */
+.catbg {
+  background: rgb(var(--tw-ink));
+  color: rgb(var(--tw-paper));
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: var(--tw-space-sm) var(--tw-space-md);
+}
+
+.catbg a {
+  color: rgb(var(--tw-paper));
+}
+
+/* Toggle Button */
+.toggle-button, .cat-collapse {
+  background: transparent;
+  border: 2px solid rgb(var(--tw-ink-faint));
+  color: rgb(var(--tw-ink));
+  padding: var(--tw-space-xs) var(--tw-space-sm);
+  cursor: pointer;
 }
 
 .titlemedium {
@@ -612,6 +649,48 @@ textarea {
   padding: var(--tw-space-sm) var(--tw-space-md);
   background: rgb(var(--tw-paper-alt));
   border-bottom: var(--tw-border-thin);
+}
+
+/* Subforums */
+.subforums, .forum-subforums {
+  font-size: var(--tw-text-xs);
+  color: rgb(var(--tw-ink-muted));
+  margin-top: var(--tw-space-xs);
+  padding-top: var(--tw-space-xs);
+  border-top: 1px dashed rgba(var(--tw-ink), 0.1);
+}
+
+.subforums a {
+  color: rgb(var(--tw-ink-muted));
+}
+
+.subforums a:hover {
+  color: rgb(var(--tw-accent-1));
+}
+
+/* Board Statistics */
+#boardstats {
+  background: rgb(var(--tw-paper));
+  border: var(--tw-border-comic);
+  margin-top: var(--tw-space-lg);
+  padding: var(--tw-space-md);
+}
+
+#boardstats .maintitle {
+  margin: calc(-1 * var(--tw-space-md));
+  margin-bottom: var(--tw-space-md);
+}
+
+/* Online Users */
+#userlinks {
+  font-size: var(--tw-text-sm);
+  color: rgb(var(--tw-ink-muted));
+  text-align: center;
+  padding: var(--tw-space-md) 0;
+}
+
+#userlinks a {
+  color: rgb(var(--tw-accent-1));
 }
 
 .pformstrip {
@@ -641,151 +720,6 @@ textarea {
 /* Member Groups */
 .g-2 { display: inline-block !important; }
 .m-2 { display: none !important; }
-
-/* Category */
-.tw-category {
-  margin-bottom: var(--tw-space-lg);
-  border: var(--tw-border-comic);
-  overflow: hidden;
-}
-
-.tw-category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgb(var(--tw-paper-alt));
-  padding: var(--tw-space-md) var(--tw-space-lg);
-  font-family: var(--tw-font-comic);
-  font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgb(var(--tw-accent-1));
-  border-bottom: var(--tw-border-thin);
-}
-
-.tw-category-header a {
-  color: rgb(var(--tw-accent-1));
-}
-
-.tw-category-subheader {
-  display: grid;
-  grid-template-columns: 1fr 80px 80px 180px;
-  gap: var(--tw-space-md);
-  background: rgb(var(--tw-ink));
-  color: rgb(var(--tw-paper));
-  padding: var(--tw-space-sm) var(--tw-space-md);
-  font-family: var(--tw-font-comic);
-  font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Forum Row */
-.tw-forum-row {
-  display: grid;
-  grid-template-columns: 1fr 80px 80px 180px;
-  gap: var(--tw-space-md);
-  align-items: center;
-  padding: var(--tw-space-md);
-  background: rgb(var(--tw-paper));
-  border-bottom: var(--tw-border-thin);
-}
-
-.tw-forum-row:last-child {
-  border-bottom: none;
-}
-
-.tw-forum-row:nth-child(even) {
-  background: rgb(var(--tw-paper-alt));
-}
-
-.tw-forum-info {
-  min-width: 0;
-}
-
-.tw-forum-title {
-  font-weight: 600;
-  margin-bottom: var(--tw-space-xs);
-}
-
-.tw-forum-title a {
-  color: rgb(var(--tw-accent-1));
-}
-
-.tw-forum-desc {
-  font-size: var(--tw-text-sm);
-  color: rgb(var(--tw-ink-muted));
-  line-height: 1.4;
-}
-
-.tw-forum-stats {
-  text-align: center;
-  font-size: var(--tw-text-sm);
-  color: rgb(var(--tw-ink-muted));
-}
-
-.tw-forum-lastpost {
-  font-size: var(--tw-text-xs);
-  color: rgb(var(--tw-ink-muted));
-  line-height: 1.6;
-}
-
-.tw-forum-lastpost a {
-  color: rgb(var(--tw-accent-1));
-}
-
-/* Board Stats */
-.tw-board-stats {
-  background: rgb(var(--tw-paper));
-  border: var(--tw-border-comic);
-  margin-top: var(--tw-space-lg);
-  overflow: hidden;
-}
-
-.tw-board-stats-header {
-  background: rgb(var(--tw-paper-alt));
-  padding: var(--tw-space-md) var(--tw-space-lg);
-  font-family: var(--tw-font-comic);
-  font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgb(var(--tw-ink));
-  border-bottom: var(--tw-border-thin);
-}
-
-.tw-board-stats-body {
-  padding: var(--tw-space-md);
-}
-
-.tw-stats-row {
-  display: flex;
-  gap: var(--tw-space-lg);
-  margin-bottom: var(--tw-space-md);
-}
-
-.tw-stats-block {
-  text-align: center;
-}
-
-.tw-stats-number {
-  display: block;
-  font-family: var(--tw-font-comic);
-  font-size: var(--tw-text-lg);
-  color: rgb(var(--tw-accent-1));
-}
-
-.tw-stats-label {
-  font-size: var(--tw-text-xs);
-  color: rgb(var(--tw-ink-muted));
-  text-transform: uppercase;
-}
-
-.tw-stats-online {
-  font-size: var(--tw-text-sm);
-  color: rgb(var(--tw-ink-muted));
-  padding: var(--tw-space-sm) 0;
-  border-top: var(--tw-border-thin);
-}
 
 /* =10. SPEECH BUBBLES
 ============================================================================= */
