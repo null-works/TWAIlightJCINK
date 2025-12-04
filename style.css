@@ -1,622 +1,234 @@
-/*
-================================================================================
-TWAILIGHT JCINK THEME - STYLESHEET
-================================================================================
-Version: 1.0.0
-Purpose: Complete CSS styling for the TWAIlight JCINK theme
-
-HOW TO USE:
-1. Go to Admin CP → Skins & Templates → CSS Stylesheet
-2. Select your skin set
-3. Paste this entire file into the stylesheet field
-4. Save
-
-TABLE OF CONTENTS:
-1. CSS Variables (Theme Colors)
-2. Reset & Base Styles
-3. Typography
-4. Layout Structure
-5. Header & Navigation
-6. Theme Toggle Button
-7. Main Content Area
-8. JCINK Forum Elements
-   8a. Forum Categories & Rows
-   8b. Topic Listings
-   8c. Posts & Mini Profiles
-   8d. Forms & Inputs
-   8e. Buttons
-   8f. Tables
-9. Footer
-10. Utility Classes
-11. Responsive Breakpoints
-
-CUSTOMIZATION TIPS:
-- To change colors: Edit the CSS variables in Section 1
-- To change fonts: Edit --font-primary and --font-heading in Section 1
-- To change spacing: Edit --space-* variables in Section 1
-- To change border radius: Edit --radius-* variables in Section 1
-
-================================================================================
-*/
-
-
-/* =============================================================================
-   1. CSS VARIABLES (THEME COLORS)
-   =============================================================================
-   All theme colors are defined here as CSS custom properties.
-
-   HOW THEMING WORKS:
-   - Light theme values are set in :root (default)
-   - Dark theme values override them when [data-theme="dark"] is set
-   - All other CSS uses var(--variable-name) to reference these values
-   - Change theme = change these values = entire site updates
-
-   NAMING CONVENTION:
-   --color-*     : Colors
-   --font-*      : Font families
-   --size-*      : Font sizes
-   --space-*     : Spacing (margins, padding)
-   --radius-*    : Border radius values
-   --shadow-*    : Box shadows
-   --transition-*: Transition timing
-   ============================================================================= */
+/* TWAIlight Theme - CSS Variables */
 
 :root {
-    /* -------------------------------------------------------------------------
-       LIGHT THEME (Default)
-       ------------------------------------------------------------------------- */
+    /* Backgrounds */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f5f5f7;
+    --color-bg-tertiary: #eaeaec;
+    --color-bg-input: #ffffff;
 
-    /* Background Colors */
-    --color-bg-primary: #ffffff;           /* Main page background */
-    --color-bg-secondary: #f5f5f7;         /* Cards, containers */
-    --color-bg-tertiary: #eaeaec;          /* Nested elements, hover states */
-    --color-bg-input: #ffffff;             /* Form inputs */
+    /* Text */
+    --color-text-primary: #1d1d1f;
+    --color-text-secondary: #6e6e73;
+    --color-text-tertiary: #86868b;
+    --color-text-inverse: #ffffff;
 
-    /* Text Colors */
-    --color-text-primary: #1d1d1f;         /* Main text */
-    --color-text-secondary: #6e6e73;       /* Secondary/muted text */
-    --color-text-tertiary: #86868b;        /* Tertiary/placeholder text */
-    --color-text-inverse: #ffffff;         /* Text on dark backgrounds */
+    /* Accent */
+    --color-accent-primary: #0071e3;
+    --color-accent-hover: #0077ED;
+    --color-accent-success: #34c759;
+    --color-accent-warning: #ff9500;
+    --color-accent-error: #ff3b30;
 
-    /* Accent Colors */
-    --color-accent-primary: #0071e3;       /* Primary actions, links */
-    --color-accent-primary-hover: #0077ED; /* Primary hover state */
-    --color-accent-secondary: #5e5ce6;     /* Secondary accent */
-    --color-accent-success: #34c759;       /* Success states */
-    --color-accent-warning: #ff9500;       /* Warning states */
-    --color-accent-error: #ff3b30;         /* Error states */
+    /* Borders */
+    --color-border: #d2d2d7;
+    --color-border-light: #e5e5ea;
+    --color-border-focus: #0071e3;
 
-    /* Border Colors */
-    --color-border-primary: #d2d2d7;       /* Main borders */
-    --color-border-secondary: #e5e5ea;     /* Subtle borders */
-    --color-border-focus: #0071e3;         /* Focus states */
+    /* Typography */
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, Consolas, monospace;
 
-    /* -------------------------------------------------------------------------
-       TYPOGRAPHY
-       ------------------------------------------------------------------------- */
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
 
-    /* Font Families */
-    --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-heading: inherit;               /* Same as primary, override if needed */
-    --font-mono: ui-monospace, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
-
-    /* Font Sizes - Mobile First (base: 16px) */
-    --size-xs: 0.75rem;    /* 12px */
-    --size-sm: 0.875rem;   /* 14px */
-    --size-base: 1rem;     /* 16px */
-    --size-md: 1.125rem;   /* 18px */
-    --size-lg: 1.25rem;    /* 20px */
-    --size-xl: 1.5rem;     /* 24px */
-    --size-2xl: 1.875rem;  /* 30px */
-    --size-3xl: 2.25rem;   /* 36px */
-
-    /* Line Heights */
-    --leading-tight: 1.25;
-    --leading-normal: 1.5;
-    --leading-relaxed: 1.75;
-
-    /* -------------------------------------------------------------------------
-       SPACING
-       ------------------------------------------------------------------------- */
-
-    --space-xs: 0.25rem;   /* 4px */
-    --space-sm: 0.5rem;    /* 8px */
-    --space-md: 1rem;      /* 16px */
-    --space-lg: 1.5rem;    /* 24px */
-    --space-xl: 2rem;      /* 32px */
-    --space-2xl: 3rem;     /* 48px */
-    --space-3xl: 4rem;     /* 64px */
-
-    /* -------------------------------------------------------------------------
-       BORDERS & SHADOWS
-       ------------------------------------------------------------------------- */
-
+    /* Borders & Effects */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-full: 9999px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+    --transition: 200ms ease;
 
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-
-    /* -------------------------------------------------------------------------
-       TRANSITIONS
-       ------------------------------------------------------------------------- */
-
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 350ms ease;
-
-    /* -------------------------------------------------------------------------
-       LAYOUT
-       ------------------------------------------------------------------------- */
-
-    --content-max-width: 1200px;           /* Max width of main content */
-    --sidebar-width: 280px;                /* If using sidebars */
+    /* Layout */
+    --max-width: 1200px;
 }
 
-/* =============================================================================
-   DARK THEME OVERRIDES
-   =============================================================================
-   When data-theme="dark" is set on <html>, these values override the defaults.
-   Only color-related variables need overriding; spacing, fonts, etc. stay same.
-   ============================================================================= */
-
+/* Dark Theme */
 [data-theme="dark"] {
-    /* Background Colors */
     --color-bg-primary: #1c1c1e;
     --color-bg-secondary: #2c2c2e;
     --color-bg-tertiary: #3a3a3c;
     --color-bg-input: #2c2c2e;
-
-    /* Text Colors */
     --color-text-primary: #f5f5f7;
     --color-text-secondary: #a1a1a6;
     --color-text-tertiary: #6e6e73;
     --color-text-inverse: #1d1d1f;
-
-    /* Accent Colors - Slightly adjusted for dark backgrounds */
     --color-accent-primary: #0a84ff;
-    --color-accent-primary-hover: #409cff;
-    --color-accent-secondary: #7d7aff;
-    --color-accent-success: #30d158;
-    --color-accent-warning: #ff9f0a;
-    --color-accent-error: #ff453a;
-
-    /* Border Colors */
-    --color-border-primary: #48484a;
-    --color-border-secondary: #38383a;
+    --color-accent-hover: #409cff;
+    --color-border: #48484a;
+    --color-border-light: #38383a;
     --color-border-focus: #0a84ff;
-
-    /* Shadows - More subtle on dark backgrounds */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
 }
 
-
-/* =============================================================================
-   2. RESET & BASE STYLES
-   =============================================================================
-   Modern CSS reset for consistent cross-browser rendering.
-   ============================================================================= */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
 
 html {
-    /* Smooth scrolling for anchor links */
     scroll-behavior: smooth;
-
-    /* Prevent font size inflation on mobile */
     -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
 }
 
 body {
     min-height: 100vh;
-    font-family: var(--font-primary);
-    font-size: var(--size-base);
-    line-height: var(--leading-normal);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.5;
     color: var(--color-text-primary);
-    background-color: var(--color-bg-primary);
-
-    /* Smooth theme transitions */
-    transition:
-        background-color var(--transition-base),
-        color var(--transition-base);
-
-    /* Better text rendering */
+    background: var(--color-bg-primary);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    transition: background var(--transition), color var(--transition);
 }
 
-/* Remove default list styles */
-ul, ol {
-    list-style: none;
-}
+ul, ol { list-style: none; }
+img, picture, video, svg { display: block; max-width: 100%; height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { background: none; border: none; cursor: pointer; }
 
-/* Images */
-img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-/* Inherit fonts for form elements */
-input, button, textarea, select {
-    font: inherit;
-    color: inherit;
-}
-
-/* Remove default button styles */
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* Links */
 a {
     color: var(--color-accent-primary);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: color var(--transition);
 }
+a:hover { color: var(--color-accent-hover); }
 
-a:hover {
-    color: var(--color-accent-primary-hover);
-    text-decoration: underline;
-}
-
-/* Focus styles for accessibility */
 :focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
 }
 
-
-/* =============================================================================
-   3. TYPOGRAPHY
-   ============================================================================= */
-
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
     font-weight: 600;
-    line-height: var(--leading-tight);
+    line-height: 1.25;
     color: var(--color-text-primary);
 }
 
-h1 { font-size: var(--size-2xl); }
-h2 { font-size: var(--size-xl); }
-h3 { font-size: var(--size-lg); }
-h4 { font-size: var(--size-md); }
-h5 { font-size: var(--size-base); }
-h6 { font-size: var(--size-sm); }
-
-p {
-    margin-bottom: var(--space-md);
-}
-
-strong, b {
-    font-weight: 600;
-}
-
-small {
-    font-size: var(--size-sm);
-}
-
-code, pre {
-    font-family: var(--font-mono);
-    font-size: var(--size-sm);
-    background-color: var(--color-bg-tertiary);
-    border-radius: var(--radius-sm);
-}
-
-code {
-    padding: 0.125em 0.375em;
-}
-
-pre {
-    padding: var(--space-md);
-    overflow-x: auto;
-}
-
-
-/* =============================================================================
-   4. LAYOUT STRUCTURE
-   =============================================================================
-   Main structural elements from the board wrapper.
-   ============================================================================= */
-
+/* Layout */
 #site-wrapper {
-    max-width: var(--content-max-width);
+    max-width: var(--max-width);
     margin: 0 auto;
     padding: var(--space-md);
 }
 
-#site-content {
-    min-height: 50vh;
-}
+#site-content { min-height: 50vh; }
 
+/* Header */
+#site-header { margin-bottom: var(--space-lg); }
 
-/* =============================================================================
-   5. HEADER & NAVIGATION
-   ============================================================================= */
-
-#site-header {
-    margin-bottom: var(--space-lg);
-}
-
-/* Top bar containing logo and theme toggle */
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--space-md) 0;
-    margin-bottom: var(--space-md);
-}
-
-/* Site branding/logo */
-.site-branding {
-    flex-shrink: 0;
 }
 
 .site-logo {
-    font-size: var(--size-xl);
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-text-primary);
-    text-decoration: none;
 }
+.site-logo:hover { color: var(--color-accent-primary); text-decoration: none; }
 
-.site-logo:hover {
-    color: var(--color-accent-primary);
-    text-decoration: none;
-}
+.board-header { margin-bottom: var(--space-md); }
 
-/* Board header (JCINK ads on free accounts) */
-.board-header {
-    margin-bottom: var(--space-md);
-}
-
-/* Breadcrumb navigation */
 .site-nav {
     padding: var(--space-sm) var(--space-md);
-    background-color: var(--color-bg-secondary);
+    background: var(--color-bg-secondary);
     border-radius: var(--radius-md);
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     color: var(--color-text-secondary);
 }
+.site-nav a { color: var(--color-text-secondary); }
+.site-nav a:hover { color: var(--color-accent-primary); }
 
-/* JCINK breadcrumb links */
-.site-nav a {
-    color: var(--color-text-secondary);
-}
-
-.site-nav a:hover {
-    color: var(--color-accent-primary);
-}
-
-
-/* =============================================================================
-   6. THEME TOGGLE BUTTON
-   ============================================================================= */
-
+/* Theme Toggle */
 .theme-toggle {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
-    background-color: var(--color-bg-secondary);
-    border: 1px solid var(--color-border-primary);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     color: var(--color-text-primary);
     cursor: pointer;
-    transition:
-        background-color var(--transition-fast),
-        border-color var(--transition-fast);
+    transition: background var(--transition), border-color var(--transition);
 }
-
 .theme-toggle:hover {
-    background-color: var(--color-bg-tertiary);
+    background: var(--color-bg-tertiary);
     border-color: var(--color-accent-primary);
 }
 
-.toggle-icon {
-    font-size: var(--size-md);
-    line-height: 1;
-}
-
-.toggle-label {
-    /* Hide label on very small screens */
-}
-
-@media (max-width: 480px) {
-    .toggle-label {
-        /* Screen reader only on mobile - icon only visible */
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-
-    .theme-toggle {
-        padding: var(--space-sm);
-    }
-}
-
-
-/* =============================================================================
-   7. MAIN CONTENT AREA
-   ============================================================================= */
-
-#site-content {
-    background-color: var(--color-bg-primary);
-}
-
-
-/* =============================================================================
-   8. JCINK FORUM ELEMENTS
-   =============================================================================
-   Styles for JCINK-specific classes and elements.
-
-   JCINK CLASS REFERENCE:
-   These are the main CSS classes used by JCINK that you can target:
-
-   LAYOUT:
-   - .tableborder      : Main container borders
-   - .tablefill        : Table cell fills
-   - .tablepad         : Padded table cells
-   - .maintitle        : Category/section titles
-   - .subtitle         : Subtitles and headers
-
-   FORUM INDEX:
-   - .category         : Category containers
-   - .forum            : Individual forum rows
-   - .forumrow         : Forum row styling
-
-   TOPIC LISTINGS:
-   - .topicrow         : Topic row container
-   - .topictitle       : Topic title styling
-
-   POSTS:
-   - .post1 / .post2   : Alternating post rows
-   - .postcolor        : Post content area
-   - .signature        : Signature area
-   - .postdetails      : Post metadata
-
-   PROFILES:
-   - .mini-profile     : Mini profile in posts
-
-   FORMS:
-   - .forminput        : Input fields
-   - .textinput        : Text inputs
-   - .formsubmit       : Submit buttons
-   ============================================================================= */
-
-
-/* -----------------------------------------------------------------------------
-   8a. FORUM CATEGORIES & ROWS
-   ----------------------------------------------------------------------------- */
-
-/* Main table border container */
+/* JCINK Elements */
 .tableborder {
-    background-color: var(--color-bg-secondary);
-    border: 1px solid var(--color-border-primary);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     margin-bottom: var(--space-md);
     overflow: hidden;
 }
 
-/* Category/section titles */
 .maintitle {
-    background-color: var(--color-bg-tertiary);
+    background: var(--color-bg-tertiary);
     color: var(--color-text-primary);
     padding: var(--space-md);
-    font-size: var(--size-lg);
+    font-size: 1.125rem;
     font-weight: 600;
 }
+.maintitle a { color: var(--color-text-primary); }
+.maintitle a:hover { color: var(--color-accent-primary); }
 
-.maintitle a {
-    color: var(--color-text-primary);
-}
-
-.maintitle a:hover {
-    color: var(--color-accent-primary);
-}
-
-/* Subtitles */
 .subtitle {
-    background-color: var(--color-bg-tertiary);
+    background: var(--color-bg-tertiary);
     color: var(--color-text-secondary);
     padding: var(--space-sm) var(--space-md);
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     font-weight: 500;
 }
 
-/* Table cells */
-.tablefill {
-    background-color: var(--color-bg-secondary);
-}
+.tablefill { background: var(--color-bg-secondary); }
+.tablepad { padding: var(--space-md); }
 
-.tablepad {
-    padding: var(--space-md);
-}
-
-/* Row separators */
 .pformstrip {
-    background-color: var(--color-bg-tertiary);
+    background: var(--color-bg-tertiary);
     padding: var(--space-sm) var(--space-md);
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     color: var(--color-text-secondary);
 }
 
+.row1, .post1 { background: var(--color-bg-secondary); }
+.row2, .post2 { background: var(--color-bg-primary); }
+.row1:hover, .row2:hover { background: var(--color-bg-tertiary); }
 
-/* -----------------------------------------------------------------------------
-   8b. TOPIC LISTINGS
-   ----------------------------------------------------------------------------- */
-
-/* Alternating row colors */
-.row1, .post1 {
-    background-color: var(--color-bg-secondary);
-}
-
-.row2, .post2 {
-    background-color: var(--color-bg-primary);
-}
-
-/* Row hover effect */
-.row1:hover,
-.row2:hover {
-    background-color: var(--color-bg-tertiary);
-}
-
-
-/* -----------------------------------------------------------------------------
-   8c. POSTS & MINI PROFILES
-   ----------------------------------------------------------------------------- */
-
-/* Post content area */
 .postcolor {
     padding: var(--space-md);
-    line-height: var(--leading-relaxed);
+    line-height: 1.75;
 }
 
-/* Post details (date, post number, etc.) */
 .postdetails {
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     color: var(--color-text-secondary);
 }
 
-/* Signature area */
 .signature {
     margin-top: var(--space-md);
     padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border-secondary);
-    font-size: var(--size-sm);
+    border-top: 1px solid var(--color-border-light);
+    font-size: 0.875rem;
     color: var(--color-text-secondary);
 }
 
-
-/* -----------------------------------------------------------------------------
-   8d. FORMS & INPUTS
-   ----------------------------------------------------------------------------- */
-
-/* General input styling */
+/* Forms */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -627,51 +239,28 @@ select,
 .textinput {
     width: 100%;
     padding: var(--space-sm) var(--space-md);
-    background-color: var(--color-bg-input);
-    border: 1px solid var(--color-border-primary);
+    background: var(--color-bg-input);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    font-size: var(--size-base);
+    font-size: 1rem;
     color: var(--color-text-primary);
-    transition:
-        border-color var(--transition-fast),
-        box-shadow var(--transition-fast);
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
-input[type="search"]:focus,
 textarea:focus,
-select:focus,
-.forminput:focus,
-.textinput:focus {
+select:focus {
     border-color: var(--color-border-focus);
     box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
     outline: none;
 }
 
-/* Placeholder text */
-::placeholder {
-    color: var(--color-text-tertiary);
-}
+::placeholder { color: var(--color-text-tertiary); }
+textarea { min-height: 120px; resize: vertical; }
 
-/* Textarea specific */
-textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-/* Select dropdown */
-select {
-    cursor: pointer;
-}
-
-
-/* -----------------------------------------------------------------------------
-   8e. BUTTONS
-   ----------------------------------------------------------------------------- */
-
-/* Base button styles */
+/* Buttons */
 .button,
 input[type="submit"],
 input[type="button"],
@@ -680,107 +269,57 @@ button[type="submit"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-sm);
     padding: var(--space-sm) var(--space-lg);
-    background-color: var(--color-accent-primary);
+    background: var(--color-accent-primary);
     border: none;
     border-radius: var(--radius-md);
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     font-weight: 500;
     color: var(--color-text-inverse);
     cursor: pointer;
-    transition:
-        background-color var(--transition-fast),
-        transform var(--transition-fast);
+    transition: background var(--transition), transform var(--transition);
 }
 
 .button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover,
-button[type="submit"]:hover,
-.formsubmit:hover {
-    background-color: var(--color-accent-primary-hover);
+input[type="button"]:hover {
+    background: var(--color-accent-hover);
     text-decoration: none;
 }
 
 .button:active,
 input[type="submit"]:active,
-input[type="button"]:active,
-button[type="submit"]:active,
-.formsubmit:active {
+input[type="button"]:active {
     transform: scale(0.98);
 }
 
-/* Secondary button style */
-.button-secondary {
-    background-color: var(--color-bg-tertiary);
-    color: var(--color-text-primary);
-}
-
-.button-secondary:hover {
-    background-color: var(--color-border-primary);
-}
-
-
-/* -----------------------------------------------------------------------------
-   8f. TABLES
-   ----------------------------------------------------------------------------- */
-
-/* JCINK uses tables heavily - make them responsive */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
+/* Tables */
+table { width: 100%; border-collapse: collapse; }
 td, th {
     padding: var(--space-sm) var(--space-md);
     text-align: left;
     vertical-align: top;
 }
+th { font-weight: 600; }
 
-th {
-    font-weight: 600;
-    color: var(--color-text-primary);
-}
-
-
-/* =============================================================================
-   9. FOOTER
-   ============================================================================= */
-
+/* Footer */
 #site-footer {
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
     padding: var(--space-lg) 0;
-    border-top: 1px solid var(--color-border-secondary);
+    border-top: 1px solid var(--color-border-light);
     text-align: center;
 }
 
-.skin-selector {
-    margin-bottom: var(--space-md);
-}
-
-.skin-selector select {
-    width: auto;
-    min-width: 200px;
-}
+.skin-selector { margin-bottom: var(--space-md); }
+.skin-selector select { width: auto; min-width: 200px; }
 
 .copyright {
-    font-size: var(--size-sm);
+    font-size: 0.875rem;
     color: var(--color-text-tertiary);
 }
+.copyright a { color: var(--color-text-secondary); }
 
-.copyright a {
-    color: var(--color-text-secondary);
-}
-
-
-/* =============================================================================
-   10. UTILITY CLASSES
-   =============================================================================
-   Helper classes for common styling needs.
-   ============================================================================= */
-
-/* Screen reader only */
+/* Utilities */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -788,83 +327,23 @@ th {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
+    clip: rect(0,0,0,0);
     border: 0;
 }
 
-/* Text alignment */
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-
-/* Display utilities */
-.hidden { display: none; }
-.block { display: block; }
-.flex { display: flex; }
-.grid { display: grid; }
-
-/* Flexbox utilities */
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.flex-between {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Spacing utilities */
-.mt-md { margin-top: var(--space-md); }
-.mb-md { margin-bottom: var(--space-md); }
-.p-md { padding: var(--space-md); }
-
-
-/* =============================================================================
-   11. RESPONSIVE BREAKPOINTS
-   =============================================================================
-   Mobile-first responsive adjustments.
-
-   BREAKPOINTS:
-   - Base: 0 - 479px (mobile)
-   - sm: 480px+ (large mobile)
-   - md: 768px+ (tablet)
-   - lg: 1024px+ (desktop)
-   - xl: 1280px+ (large desktop)
-   ============================================================================= */
-
-/* Small devices (480px and up) */
+/* Responsive */
 @media (min-width: 480px) {
-    #site-wrapper {
-        padding: var(--space-lg);
-    }
+    #site-wrapper { padding: var(--space-lg); }
 }
 
-/* Medium devices (768px and up) */
 @media (min-width: 768px) {
-    h1 { font-size: var(--size-3xl); }
-    h2 { font-size: var(--size-2xl); }
-
-    .header-top {
-        padding: var(--space-lg) 0;
-    }
+    .header-top { padding: var(--space-lg) 0; }
 }
 
-/* Large devices (1024px and up) */
 @media (min-width: 1024px) {
-    #site-wrapper {
-        padding: var(--space-xl);
-    }
+    #site-wrapper { padding: var(--space-xl); }
 }
 
-
-/* =============================================================================
-   END OF STYLESHEET
-   =============================================================================
-   For help or questions, refer to:
-   - JCINK CSS Guide: https://jcink.com/main/wiki/jfb-skinning-css-guide
-   - MDN CSS Docs: https://developer.mozilla.org/en-US/docs/Web/CSS
-   ============================================================================= */
+@media (max-width: 480px) {
+    .theme-toggle { padding: var(--space-sm); font-size: 0.75rem; }
+}
