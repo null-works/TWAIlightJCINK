@@ -120,6 +120,45 @@
   </footer>
 
   <% JAVASCRIPT %>
-  <script src="twailight.js"></script>
+  <script>
+  (function() {
+    'use strict';
+    var THEME_KEY = 'tw-theme';
+
+    function getStoredTheme() {
+      try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+    }
+
+    function setStoredTheme(theme) {
+      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+    }
+
+    function getCurrentTheme() {
+      return document.documentElement.classList.contains('lightMode') ? 'light' : 'dark';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.classList.remove('darkMode', 'lightMode');
+      document.documentElement.classList.add(theme === 'light' ? 'lightMode' : 'darkMode');
+      setStoredTheme(theme);
+      var metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#fafafc' : '#1a1a1e');
+    }
+
+    function toggleTheme() {
+      setTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
+    }
+
+    var toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) { e.preventDefault(); toggleTheme(); });
+    }
+
+    var stored = getStoredTheme();
+    if (stored) setTheme(stored);
+
+    window.twailight = { toggleTheme: toggleTheme, setTheme: setTheme, getCurrentTheme: getCurrentTheme };
+  })();
+  </script>
 </body>
 </html>
