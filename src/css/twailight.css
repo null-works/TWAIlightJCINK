@@ -550,31 +550,42 @@ textarea {
 }
 
 .tw-main {
-  background: rgba(var(--tw-paper), 0.85);
+  background: rgb(var(--tw-paper));
   border: var(--tw-border-comic);
   box-shadow: var(--tw-panel-shadow);
   padding: var(--tw-space-lg);
   margin-top: calc(-1 * var(--tw-space-md));
   position: relative;
-  backdrop-filter: blur(8px);
+}
+
+/* Force dark backgrounds on all table elements */
+.tw-main table,
+.tw-main td,
+.tw-main th,
+.tw-main tr {
+  background: inherit;
 }
 
 /* Table Styles */
 .tableborder {
-  background: rgba(var(--tw-paper), 0.85);
+  background: rgb(var(--tw-paper)) !important;
   border: var(--tw-border-comic);
   margin-bottom: var(--tw-space-lg);
   overflow: hidden;
-  backdrop-filter: blur(8px);
+}
+
+.tableborder table {
+  background: transparent !important;
 }
 
 .tablefill, .tablepad {
   padding: var(--tw-space-md);
+  background: rgb(var(--tw-paper)) !important;
 }
 
-.row1 { background: rgb(var(--tw-paper)); }
-.row2 { background: rgb(var(--tw-paper-alt)); }
-.row3, .row4 { background: rgb(var(--tw-paper-dark)); }
+.row1 { background: rgb(var(--tw-paper)) !important; }
+.row2 { background: rgb(var(--tw-paper-alt)) !important; }
+.row3, .row4 { background: rgb(var(--tw-paper-dark)) !important; }
 
 .row1, .row2, .row3, .row4 {
   padding: var(--tw-space-md);
