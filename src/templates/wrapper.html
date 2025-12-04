@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="darkMode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a1a1e">
+  <title><% TITLE %></title>
+  <% CSS %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      var theme = localStorage.getItem('tw-theme') || 'dark';
+      document.documentElement.className = theme === 'light' ? 'lightMode' : 'darkMode';
+    })();
+  </script>
+</head>
+<body id="act-<!-- |input_act| -->">
+
+  <!-- Header -->
+  <header class="tw-header">
+    <div class="tw-header-inner">
+      <!-- Logo -->
+      <a href="?act=idx" class="tw-logo">
+        <% BOARD NAME %>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="tw-nav" aria-label="Main navigation">
+        <% NAVIGATION %>
+      </nav>
+
+      <!-- User Bar -->
+      <div class="tw-userbar">
+        <!-- Member Content -->
+        <div class="m-<!-- |g_id| -->">
+          <div class="tw-userbar-dropdown">
+            <button type="button" class="button" aria-haspopup="true" aria-expanded="false">
+              <!-- |name| -->
+            </button>
+            <div class="tw-userbar-dropdown-content">
+              <a href="?showuser=<!-- |id| -->">My Profile</a>
+              <a href="?act=UserCP">User CP</a>
+              <a href="?act=Msg">
+                Messages
+                <span class="m-<!-- |g_id| -->">(<!-- |new_msg| -->)</span>
+              </a>
+              <a href="?act=Login&CODE=03&auth_key=<!-- |auth_key| -->">Log Out</a>
+              <% SUBACCOUNTS %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guest Content -->
+        <div class="g-<!-- |g_id| -->" style="display:none;">
+          <a href="?act=Login" class="button">Log In</a>
+          <a href="?act=Reg&CODE=00" class="button">Register</a>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button type="button" class="tw-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="tw-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-5a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 18a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm9-9a1 1 0 110 2h-2a1 1 0 110-2h2zM5 12a1 1 0 110 2H3a1 1 0 110-2h2zm14.07-6.36a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zM7.76 17.66a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zm10.48 0a1 1 0 011.42 1.41l-1.42 1.42a1 1 0 11-1.41-1.42l1.41-1.41zM7.76 6.34a1 1 0 01-1.41 1.42L4.93 6.34a1 1 0 111.42-1.41l1.41 1.41z"/>
+          </svg>
+          <svg class="tw-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button type="button" class="tw-hamburger" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="tw-mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <% NAVIGATION %>
+
+      <!-- Mobile User Bar -->
+      <div class="tw-userbar">
+        <div class="m-<!-- |g_id| -->">
+          <a href="?showuser=<!-- |id| -->">My Profile</a>
+          <a href="?act=UserCP">User CP</a>
+          <a href="?act=Msg">Messages (<!-- |new_msg| -->)</a>
+          <a href="?act=Login&CODE=03&auth_key=<!-- |auth_key| -->">Log Out</a>
+        </div>
+        <div class="g-<!-- |g_id| -->" style="display:none;">
+          <a href="?act=Login" class="button">Log In</a>
+          <a href="?act=Reg&CODE=00" class="button">Register</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Board Header (optional banner/announcement area) -->
+  <% BOARD HEADER %>
+
+  <!-- Main Content -->
+  <main class="tw-main">
+    <div class="tw-wrapper">
+      <% BOARD %>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="tw-footer">
+    <div class="tw-footer-inner">
+      <div class="tw-footer-copyright">
+        <% COPYRIGHT %>
+      </div>
+      <div class="tw-footer-links">
+        <% SKIN_SELECTOR %>
+      </div>
+    </div>
+  </footer>
+
+  <% JAVASCRIPT %>
+  <script src="twailight.js"></script>
+</body>
+</html>
