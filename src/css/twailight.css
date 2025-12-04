@@ -282,12 +282,11 @@ a:hover {
 }
 
 .tw-topbar-inner {
-  max-width: var(--tw-wrapper-max);
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--tw-space-md);
+  padding: 0 var(--tw-space-lg);
 }
 
 /* Hero Section */
@@ -413,13 +412,12 @@ a:hover {
 }
 
 .tw-nav-inner {
-  max-width: var(--tw-wrapper-max);
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--tw-space-xs);
   flex-wrap: wrap;
+  padding: 0 var(--tw-space-lg);
 }
 
 .tw-nav a {
