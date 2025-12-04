@@ -391,8 +391,8 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  min-height: 60px;
-  padding: var(--tw-space-md);
+  height: 44px;
+  padding: 0 var(--tw-space-md);
   background: rgba(var(--tw-paper), 0.95);
   border-top: var(--tw-border-thin);
   font-family: var(--tw-font-comic);
