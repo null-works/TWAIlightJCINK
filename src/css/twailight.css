@@ -44,7 +44,7 @@
   --tw-text-hero: clamp(48px, 8vw, 80px);
 
   /* Layout */
-  --tw-wrapper-max: 1200px;
+  --tw-wrapper-max: 1400px;
   --tw-wrapper-min: 320px;
 
   /* Comic Border */
@@ -553,20 +553,22 @@ textarea {
 }
 
 .tw-main {
-  background: rgb(var(--tw-paper));
+  background: rgba(var(--tw-paper), 0.85);
   border: var(--tw-border-comic);
   box-shadow: var(--tw-panel-shadow);
   padding: var(--tw-space-lg);
   margin-top: calc(-1 * var(--tw-space-md));
   position: relative;
+  backdrop-filter: blur(8px);
 }
 
 /* Table Styles */
 .tableborder {
-  background: rgb(var(--tw-paper));
+  background: rgba(var(--tw-paper), 0.7);
   border: var(--tw-border-thin);
   margin-bottom: var(--tw-space-md);
   overflow: hidden;
+  backdrop-filter: blur(4px);
 }
 
 .tablefill, .tablepad {
