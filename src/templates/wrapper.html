@@ -3,111 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1a1a1e">
   <title><% TITLE %></title>
   <% CSS %>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&display=swap" rel="stylesheet">
   <script>
     (function() {
-      var theme = localStorage.getItem('tw-theme') || 'dark';
-      document.documentElement.className = theme === 'light' ? 'lightMode' : 'darkMode';
+      var theme = localStorage.getItem('tw-theme') || 'darkMode';
+      document.documentElement.className = theme;
     })();
   </script>
 </head>
 <body id="act-<!-- |input_act| -->">
 
-  <!-- Header -->
-  <header class="tw-header">
-    <div class="tw-header-inner">
-      <!-- Logo -->
-      <a href="?act=idx" class="tw-logo">
-        <% BOARD NAME %>
-      </a>
+  <!-- ==================== SITE HEADER ==================== -->
+  <header class="tw-site-header">
 
-      <!-- Desktop Navigation -->
-      <nav class="tw-nav" aria-label="Main navigation">
-        <% NAVIGATION %>
-      </nav>
+    <!-- Top Bar: User Info & Controls -->
+    <div class="tw-topbar">
+      <div class="tw-topbar-inner">
 
-      <!-- User Bar -->
-      <div class="tw-userbar">
-        <!-- Member Content -->
-        <div class="m-<!-- |g_id| -->">
-          <div class="tw-userbar-dropdown">
-            <button type="button" class="button" aria-haspopup="true" aria-expanded="false">
-              <!-- |name| -->
-            </button>
-            <div class="tw-userbar-dropdown-content">
-              <a href="?showuser=<!-- |id| -->">My Profile</a>
-              <a href="?act=UserCP">User CP</a>
-              <a href="?act=Msg">
-                Messages
-                <span class="m-<!-- |g_id| -->">(<!-- |new_msg| -->)</span>
-              </a>
-              <a href="?act=Login&CODE=03&auth_key=<!-- |auth_key| -->">Log Out</a>
-              <% SUBACCOUNTS %>
-            </div>
-          </div>
+        <!-- User Welcome -->
+        <div class="tw-user-link">
+          <span class="g-<!-- |g_id| -->" style="display:none;">Welcome, <strong>Guest</strong></span>
+          <span class="m-<!-- |g_id| -->">Welcome back, <a href="?showuser=<!-- |id| -->"><strong><!-- |name| --></strong></a></span>
         </div>
 
-        <!-- Guest Content -->
-        <div class="g-<!-- |g_id| -->" style="display:none;">
-          <a href="?act=Login" class="button">Log In</a>
-          <a href="?act=Reg&CODE=00" class="button">Register</a>
+        <!-- User Controls -->
+        <div class="tw-user-controls">
+          <!-- Guest Links -->
+          <span class="g-<!-- |g_id| -->" style="display:none;">
+            <a href="?act=Login" class="button">Log In</a>
+            <a href="?act=Reg&CODE=00" class="button tw-btn-pop">Register</a>
+          </span>
+
+          <!-- Member Links -->
+          <span class="m-<!-- |g_id| -->">
+            <a href="?act=Msg" class="button">Messages (<!-- |new_msg| -->)</a>
+            <a href="?act=UserCP" class="button">Control Panel</a>
+            <a href="?act=Login&CODE=03&auth_key=<!-- |auth_key| -->" class="button">Log Out</a>
+          </span>
+
+          <!-- Theme Toggle -->
+          <button type="button" class="tw-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <svg class="tw-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-5a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 18a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm9-9a1 1 0 110 2h-2a1 1 0 110-2h2zM5 12a1 1 0 110 2H3a1 1 0 110-2h2z"/>
+            </svg>
+            <svg class="tw-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+            </svg>
+          </button>
         </div>
 
-        <!-- Theme Toggle -->
-        <button type="button" class="tw-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-          <svg class="tw-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-5a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 18a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm9-9a1 1 0 110 2h-2a1 1 0 110-2h2zM5 12a1 1 0 110 2H3a1 1 0 110-2h2zm14.07-6.36a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zM7.76 17.66a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zm10.48 0a1 1 0 011.42 1.41l-1.42 1.42a1 1 0 11-1.41-1.42l1.41-1.41zM7.76 6.34a1 1 0 01-1.41 1.42L4.93 6.34a1 1 0 111.42-1.41l1.41 1.41z"/>
-          </svg>
-          <svg class="tw-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
-          </svg>
-        </button>
       </div>
-
-      <!-- Mobile Hamburger -->
-      <button type="button" class="tw-hamburger" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
 
-    <!-- Mobile Navigation -->
-    <nav class="tw-mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-      <% NAVIGATION %>
+    <!-- Hero Grid: Comic Panel Layout -->
+    <div class="tw-hero-grid">
 
-      <!-- Mobile User Bar -->
-      <div class="tw-userbar">
-        <div class="m-<!-- |g_id| -->">
-          <a href="?showuser=<!-- |id| -->">My Profile</a>
-          <a href="?act=UserCP">User CP</a>
-          <a href="?act=Msg">Messages (<!-- |new_msg| -->)</a>
-          <a href="?act=Login&CODE=03&auth_key=<!-- |auth_key| -->">Log Out</a>
-        </div>
-        <div class="g-<!-- |g_id| -->" style="display:none;">
-          <a href="?act=Login" class="button">Log In</a>
-          <a href="?act=Reg&CODE=00" class="button">Register</a>
+      <!-- Main Panel (Large Left) -->
+      <div class="tw-hero-grid-item tw-halftone">
+        <img src="https://placehold.co/800x600/1a1a1e/bf7e43?text=HERO+IMAGE" alt="Hero">
+        <div class="tw-caption">
+          <span class="tw-stamp">Issue #01</span>
+          Your Site Tagline Here
         </div>
       </div>
+
+      <!-- Panel 2 (Top Right) -->
+      <div class="tw-hero-grid-item">
+        <img src="https://placehold.co/400x300/2d2a26/ebe6dc?text=PANEL+2" alt="Panel 2">
+        <div class="tw-caption">Latest News</div>
+      </div>
+
+      <!-- Panel 3 (Top Far Right) -->
+      <div class="tw-hero-grid-item">
+        <img src="https://placehold.co/400x300/2d2a26/ebe6dc?text=PANEL+3" alt="Panel 3">
+        <div class="tw-caption">Featured</div>
+      </div>
+
+      <!-- Panel 4 (Bottom Right) -->
+      <div class="tw-hero-grid-item">
+        <img src="https://placehold.co/400x300/2d2a26/ebe6dc?text=PANEL+4" alt="Panel 4">
+        <div class="tw-caption">Updates</div>
+      </div>
+
+      <!-- Panel 5 (Bottom Far Right) -->
+      <div class="tw-hero-grid-item">
+        <img src="https://placehold.co/400x300/2d2a26/ebe6dc?text=PANEL+5" alt="Panel 5">
+        <div class="tw-caption">Community</div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="tw-nav">
+      <div class="tw-nav-inner">
+        <% NAVIGATION %>
+      </div>
     </nav>
+
   </header>
 
-  <!-- Board Header (optional banner/announcement area) -->
+  <!-- Board Header (Announcements) -->
   <% BOARD HEADER %>
 
-  <!-- Main Content -->
-  <main class="tw-main">
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
     <div class="tw-wrapper">
-      <% BOARD %>
+      <div class="tw-main tw-paper-texture">
+        <% BOARD %>
+      </div>
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="tw-footer">
     <div class="tw-footer-inner">
       <div class="tw-footer-copyright">
@@ -135,7 +146,8 @@
   }
 
   (function() {
-    if (localStorage.getItem('tw-theme') === 'lightMode') {
+    var stored = localStorage.getItem('tw-theme');
+    if (stored === 'lightMode') {
       setTheme('lightMode');
     } else {
       setTheme('darkMode');
