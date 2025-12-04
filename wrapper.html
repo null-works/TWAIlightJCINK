@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+TWAILIGHT JCINK THEME - BOARD WRAPPER
+================================================================================
+Version: 1.0.0
+Purpose: Main HTML structure that wraps all JCINK forum content
+
+HOW TO USE:
+1. Go to Admin CP → Skins & Templates → Board Wrappers
+2. Select your skin set
+3. Paste this entire file into the wrapper field
+4. Save
+
+JCINK VARIABLES USED:
+- <% TITLE %>        : Page title (set by JCINK)
+- <% CSS %>          : Loads your stylesheet from Skins & Templates
+- <% JAVASCRIPT %>   : JCINK's required JavaScript
+- <% BOARD HEADER %> : Header area (contains ads on free accounts)
+- <% NAVIGATION %>   : Breadcrumb navigation trail
+- <% BOARD %>        : Main content area (forums, topics, posts, etc.)
+- <% SKIN_SELECTOR %>: Theme/skin dropdown selector
+- <% COPYRIGHT %>    : Required JCINK copyright notice
+
+STRUCTURE OVERVIEW:
+html
+  └── body
+      └── #site-wrapper (main container)
+          ├── #site-header (logo, navigation, theme toggle)
+          ├── #site-content (JCINK board content)
+          └── #site-footer (skin selector, copyright)
+================================================================================
+-->
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% TITLE %></title>
+
+    <!-- JCINK Required: Loads your CSS stylesheet -->
+    <% CSS %>
+
+    <!-- JCINK Required: Core JavaScript functionality -->
+    <% JAVASCRIPT %>
+
+    <!--
+    ============================================================================
+    THEME TOGGLE SCRIPT
+    ============================================================================
+    This script handles dark/light mode switching.
+
+    HOW IT WORKS:
+    1. On page load, checks localStorage for saved preference
+    2. If no preference saved, checks user's OS preference (prefers-color-scheme)
+    3. Applies the appropriate theme by setting data-theme attribute on <html>
+    4. Toggle button switches theme and saves preference to localStorage
+
+    WHY IT'S IN THE HEAD:
+    Running before the page renders prevents "flash of wrong theme" where
+    users might briefly see light mode before dark mode kicks in.
+
+    STORAGE:
+    - Key: 'twailight-theme'
+    - Values: 'light' or 'dark'
+    ============================================================================
+    -->
+    <script>
+    (function() {
+        'use strict';
+
+        // =====================================================================
+        // CONFIGURATION
+        // =====================================================================
+
+        /**
+         * Storage key for theme preference in localStorage
+         * Change this if you want a different key name
+         */
+        var STORAGE_KEY = 'twailight-theme';
+
+        /**
+         * Default theme if no preference is found and OS preference unavailable
+         * Options: 'light' or 'dark'
+         */
+        var DEFAULT_THEME = 'light';
+
+        // =====================================================================
+        // THEME DETECTION & APPLICATION
+        // =====================================================================
+
+        /**
+         * Gets the user's OS color scheme preference
+         * @returns {string|null} 'dark', 'light', or null if not supported
+         */
+        function getSystemPreference() {
+            if (window.matchMedia) {
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    return 'light';
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Gets the saved theme from localStorage
+         * @returns {string|null} 'dark', 'light', or null if not saved
+         */
+        function getSavedTheme() {
+            try {
+                return localStorage.getItem(STORAGE_KEY);
+            } catch (e) {
+                // localStorage might be unavailable (private browsing, etc.)
+                return null;
+            }
+        }
+
+        /**
+         * Saves theme preference to localStorage
+         * @param {string} theme - 'dark' or 'light'
+         */
+        function saveTheme(theme) {
+            try {
+                localStorage.setItem(STORAGE_KEY, theme);
+            } catch (e) {
+                // Silently fail if localStorage unavailable
+            }
+        }
+
+        /**
+         * Applies theme to the document
+         * @param {string} theme - 'dark' or 'light'
+         */
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+
+        /**
+         * Gets the current active theme
+         * @returns {string} 'dark' or 'light'
+         */
+        function getCurrentTheme() {
+            return document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
+        }
+
+        /**
+         * Toggles between dark and light theme
+         * Saves the new preference and updates the toggle button
+         */
+        function toggleTheme() {
+            var currentTheme = getCurrentTheme();
+            var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            applyTheme(newTheme);
+            saveTheme(newTheme);
+            updateToggleButton(newTheme);
+        }
+
+        /**
+         * Updates the toggle button text/icon to reflect current theme
+         * @param {string} theme - 'dark' or 'light'
+         */
+        function updateToggleButton(theme) {
+            var button = document.getElementById('theme-toggle');
+            if (button) {
+                // Show opposite theme name (what clicking will switch TO)
+                var label = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                var icon = theme === 'dark' ? '☀️' : '🌙';
+                button.innerHTML = '<span class="toggle-icon">' + icon + '</span><span class="toggle-label">' + label + '</span>';
+                button.setAttribute('aria-label', 'Switch to ' + label);
+            }
+        }
+
+        // =====================================================================
+        // INITIALIZATION
+        // =====================================================================
+
+        /**
+         * Determines and applies the initial theme
+         * Priority: 1) Saved preference → 2) OS preference → 3) Default
+         */
+        function initializeTheme() {
+            var theme = getSavedTheme() || getSystemPreference() || DEFAULT_THEME;
+            applyTheme(theme);
+
+            // Once DOM is ready, update the toggle button and attach event listener
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    updateToggleButton(theme);
+                    attachToggleListener();
+                });
+            } else {
+                updateToggleButton(theme);
+                attachToggleListener();
+            }
+        }
+
+        /**
+         * Attaches click event listener to the toggle button
+         */
+        function attachToggleListener() {
+            var button = document.getElementById('theme-toggle');
+            if (button) {
+                button.addEventListener('click', toggleTheme);
+            }
+        }
+
+        // Make toggleTheme available globally for the button onclick
+        window.TWAIlight = window.TWAIlight || {};
+        window.TWAIlight.toggleTheme = toggleTheme;
+
+        // Run initialization immediately
+        initializeTheme();
+
+    })();
+    </script>
+</head>
+
+<body>
+    <!--
+    ============================================================================
+    SITE WRAPPER
+    ============================================================================
+    Main container for the entire site. Use this for max-width, centering, etc.
+    ============================================================================
+    -->
+    <div id="site-wrapper">
+
+        <!--
+        ========================================================================
+        SITE HEADER
+        ========================================================================
+        Contains: Logo/site name, navigation, theme toggle, board header
+
+        The <% BOARD HEADER %> variable outputs JCINK's header content.
+        On free accounts, this includes advertisements.
+        ========================================================================
+        -->
+        <header id="site-header">
+
+            <!-- Top bar with logo and theme toggle -->
+            <div class="header-top">
+                <div class="site-branding">
+                    <!--
+                    CUSTOMIZE: Replace this with your site logo/name
+                    You can use an <img> tag or styled text
+                    -->
+                    <a href="index.php" class="site-logo">
+                        Site Name
+                    </a>
+                </div>
+
+                <!--
+                THEME TOGGLE BUTTON
+                The JavaScript above handles the functionality.
+                The button text/icon is updated dynamically.
+                -->
+                <button
+                    type="button"
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    aria-label="Toggle dark/light mode"
+                >
+                    <span class="toggle-icon">🌙</span>
+                    <span class="toggle-label">Dark Mode</span>
+                </button>
+            </div>
+
+            <!-- JCINK Board Header (ads on free accounts) -->
+            <div class="board-header">
+                <% BOARD HEADER %>
+            </div>
+
+            <!-- Breadcrumb Navigation -->
+            <nav class="site-nav" aria-label="Breadcrumb">
+                <% NAVIGATION %>
+            </nav>
+
+        </header>
+
+        <!--
+        ========================================================================
+        SITE CONTENT
+        ========================================================================
+        This is where ALL JCINK content appears:
+        - Forum index
+        - Category listings
+        - Topic listings
+        - Posts
+        - Profiles
+        - Search results
+        - etc.
+
+        The <% BOARD %> variable outputs everything. You style the internals
+        via CSS using JCINK's class names (see CSS file for reference).
+        ========================================================================
+        -->
+        <main id="site-content">
+            <% BOARD %>
+        </main>
+
+        <!--
+        ========================================================================
+        SITE FOOTER
+        ========================================================================
+        Contains: Skin selector, copyright notice
+
+        IMPORTANT: The <% COPYRIGHT %> is REQUIRED by JCINK Terms of Service.
+        Do not remove or hide it.
+        ========================================================================
+        -->
+        <footer id="site-footer">
+
+            <!-- Skin/Theme Selector Dropdown -->
+            <div class="skin-selector">
+                <% SKIN_SELECTOR %>
+            </div>
+
+            <!-- JCINK Copyright (REQUIRED - do not remove) -->
+            <div class="copyright">
+                <% COPYRIGHT %>
+            </div>
+
+        </footer>
+
+    </div><!-- /#site-wrapper -->
+
+</body>
+</html>
