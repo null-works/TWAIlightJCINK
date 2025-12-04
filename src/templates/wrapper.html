@@ -59,7 +59,7 @@
         </div>
 
         <!-- Theme Toggle -->
-        <button type="button" class="tw-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <button type="button" class="tw-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
           <svg class="tw-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-5a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 18a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm9-9a1 1 0 110 2h-2a1 1 0 110-2h2zM5 12a1 1 0 110 2H3a1 1 0 110-2h2zm14.07-6.36a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zM7.76 17.66a1 1 0 010 1.41l-1.41 1.42a1 1 0 11-1.42-1.42l1.42-1.41a1 1 0 011.41 0zm10.48 0a1 1 0 011.42 1.41l-1.42 1.42a1 1 0 11-1.41-1.42l1.41-1.41zM7.76 6.34a1 1 0 01-1.41 1.42L4.93 6.34a1 1 0 111.42-1.41l1.41 1.41z"/>
           </svg>
@@ -121,43 +121,25 @@
 
   <% JAVASCRIPT %>
   <script>
+  function setTheme(themeName) {
+    localStorage.setItem('tw-theme', themeName);
+    document.documentElement.className = themeName;
+  }
+
+  function toggleTheme() {
+    if (localStorage.getItem('tw-theme') === 'darkMode') {
+      setTheme('lightMode');
+    } else {
+      setTheme('darkMode');
+    }
+  }
+
   (function() {
-    'use strict';
-    var THEME_KEY = 'tw-theme';
-
-    function getStoredTheme() {
-      try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+    if (localStorage.getItem('tw-theme') === 'lightMode') {
+      setTheme('lightMode');
+    } else {
+      setTheme('darkMode');
     }
-
-    function setStoredTheme(theme) {
-      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
-    }
-
-    function getCurrentTheme() {
-      return document.documentElement.classList.contains('lightMode') ? 'light' : 'dark';
-    }
-
-    function setTheme(theme) {
-      document.documentElement.classList.remove('darkMode', 'lightMode');
-      document.documentElement.classList.add(theme === 'light' ? 'lightMode' : 'darkMode');
-      setStoredTheme(theme);
-      var metaTheme = document.querySelector('meta[name="theme-color"]');
-      if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#fafafc' : '#1a1a1e');
-    }
-
-    function toggleTheme() {
-      setTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
-    }
-
-    var toggleBtn = document.getElementById('themeToggle');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', function(e) { e.preventDefault(); toggleTheme(); });
-    }
-
-    var stored = getStoredTheme();
-    if (stored) setTheme(stored);
-
-    window.twailight = { toggleTheme: toggleTheme, setTheme: setTheme, getCurrentTheme: getCurrentTheme };
   })();
   </script>
 </body>
