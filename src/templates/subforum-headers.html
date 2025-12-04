@@ -1,20 +1,26 @@
 <!-- SUBFORUM HEADERS
      Jcink variables: forum_id
      Required: <% FORUM_ROWS %> macro for subforums to display
+
+     Secondary panel style - inset look, connected to parent
 -->
 
 <!-- |start| -->
-<div class="tableborder tw-subforum-list" id="subforum-<!-- |forum_id| -->">
+<div class="tw-subforum tableborder" id="subforum-<!-- |forum_id| -->">
+  <!-- Subforum Header (Inset Style) -->
   <div class="tw-subforum-header titlemedium">
+    <span class="tw-subforum-icon">&#9656;</span>
     Subforums
   </div>
-  <div class="tw-subforum-subheader catbg">
+
+  <!-- Column Headers -->
+  <div class="tw-subforum-columns catbg">
     <span class="tw-col-icon"></span>
     <span class="tw-col-forum">Forum</span>
-    <span class="tw-col-topics">Topics</span>
-    <span class="tw-col-replies">Replies</span>
-    <span class="tw-col-lastpost">Last Post Info</span>
+    <span class="tw-col-activity">Latest Activity</span>
   </div>
+
+  <!-- Subforums Container -->
   <div class="tw-subforum-body">
     <% FORUM_ROWS %>
 <!-- |end| -->

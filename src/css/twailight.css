@@ -13,7 +13,8 @@
    =11. DECORATIVE ELEMENTS
    =12. FOOTER
    =13. UTILITIES
-   =14. RESPONSIVE
+   =14. TEMPLATE COMPONENTS
+   =15. RESPONSIVE
 ============================================================================= */
 
 /* =01. ROOT & THEME VARIABLES
@@ -1136,7 +1137,491 @@ pre, .codemain {
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-/* =14. RESPONSIVE
+/* =14. TEMPLATE COMPONENTS
+============================================================================= */
+
+/* --- FORUM ROW (tw-fr-*) --- */
+.tw-fr {
+  background: rgb(var(--tw-paper));
+  border-bottom: var(--tw-border-thin);
+  overflow: hidden;
+}
+
+.tw-fr:last-child {
+  border-bottom: none;
+}
+
+.tw-fr:nth-child(even) {
+  background: rgb(var(--tw-paper-alt));
+}
+
+.tw-fr-main {
+  display: grid;
+  grid-template-columns: 50px 1fr 280px;
+  gap: var(--tw-space-md);
+  align-items: center;
+  padding: var(--tw-space-md);
+}
+
+.tw-fr-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tw-fr-icon img {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.tw-fr-info {
+  min-width: 0;
+}
+
+.tw-fr-title {
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-md);
+  letter-spacing: 1px;
+  margin-bottom: var(--tw-space-xs);
+}
+
+.tw-fr-title a {
+  color: rgb(var(--tw-accent-1));
+  text-decoration: none;
+}
+
+.tw-fr-title a:hover {
+  color: rgb(var(--tw-accent-2));
+  text-decoration: underline wavy;
+}
+
+.tw-fr-desc {
+  font-size: var(--tw-text-sm);
+  color: rgb(var(--tw-ink-muted));
+  line-height: 1.5;
+  margin-bottom: var(--tw-space-xs);
+}
+
+.tw-fr-meta {
+  font-size: var(--tw-text-xs);
+  color: rgb(var(--tw-ink-faint));
+}
+
+.tw-fr-mods a {
+  color: rgb(var(--tw-ink-faint));
+}
+
+/* Last Post Panel (Comic Inset) */
+.tw-fr-lastpost {
+  display: flex;
+  gap: var(--tw-space-sm);
+  align-items: center;
+  padding: var(--tw-space-sm);
+  background: rgb(var(--tw-paper-dark));
+  border: var(--tw-border-thin);
+  border-radius: 2px;
+}
+
+.tw-fr-avatar {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(var(--tw-paper-alt));
+  border: 2px solid rgb(var(--tw-ink));
+  flex-shrink: 0;
+}
+
+.tw-fr-lastinfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.tw-fr-lasttopic {
+  font-size: var(--tw-text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.tw-fr-lasttopic a {
+  color: rgb(var(--tw-ink));
+}
+
+.tw-fr-lastby {
+  font-size: var(--tw-text-xs);
+  color: rgb(var(--tw-ink-muted));
+  display: flex;
+  gap: var(--tw-space-xs);
+  flex-wrap: wrap;
+}
+
+.tw-fr-poster a {
+  color: rgb(var(--tw-accent-1));
+}
+
+.tw-fr-time {
+  opacity: 0.7;
+}
+
+/* Stats Strip */
+.tw-fr-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tw-space-md);
+  padding: var(--tw-space-xs) var(--tw-space-md);
+  background: linear-gradient(90deg,
+    rgba(var(--tw-accent-1), 0.1),
+    rgba(var(--tw-accent-2), 0.1));
+  border-top: 1px solid rgba(var(--tw-ink), 0.1);
+  font-family: var(--tw-font-comic);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tw-fr-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-xs);
+}
+
+.tw-fr-num {
+  font-size: var(--tw-text-body);
+  color: rgb(var(--tw-accent-1));
+  font-weight: 600;
+}
+
+.tw-fr-label {
+  font-size: var(--tw-text-xs);
+  color: rgb(var(--tw-ink-muted));
+}
+
+.tw-fr-divider {
+  color: rgb(var(--tw-pop-yellow));
+  font-size: var(--tw-text-xs);
+}
+
+/* Subforums Drawer */
+.tw-fr-subs {
+  padding: var(--tw-space-sm) var(--tw-space-md);
+  background: rgba(var(--tw-ink), 0.03);
+  border-top: 1px dashed rgba(var(--tw-ink), 0.1);
+}
+
+.tw-fr-subs:empty {
+  display: none;
+}
+
+.tw-fr-subs-label {
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(var(--tw-ink-faint));
+  margin-bottom: var(--tw-space-xs);
+}
+
+.tw-fr-subs-label::before {
+  color: rgb(var(--tw-pop-yellow));
+}
+
+.tw-fr-subs-list {
+  font-size: var(--tw-text-sm);
+}
+
+.tw-fr-subs-list a {
+  color: rgb(var(--tw-ink-muted));
+  margin-right: var(--tw-space-sm);
+}
+
+.tw-fr-subs-list a:hover {
+  color: rgb(var(--tw-accent-1));
+}
+
+/* --- CATEGORY HEADERS (tw-cat-*) --- */
+.tw-cat {
+  margin-bottom: var(--tw-space-lg);
+  border: var(--tw-border-comic);
+  overflow: hidden;
+  box-shadow: var(--tw-panel-shadow);
+}
+
+.tw-cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg,
+    rgb(var(--tw-paper-alt)) 0%,
+    rgba(var(--tw-accent-1), 0.1) 100%);
+  padding: var(--tw-space-md) var(--tw-space-lg);
+  border-bottom: var(--tw-border-thin);
+  position: relative;
+}
+
+.tw-cat-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    rgb(var(--tw-accent-1)),
+    rgb(var(--tw-accent-2)),
+    rgb(var(--tw-accent-3)));
+}
+
+.tw-cat-title {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-sm);
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-lg);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.tw-cat-title a {
+  color: rgb(var(--tw-accent-1));
+}
+
+.tw-cat-issue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  background: rgb(var(--tw-ink));
+  color: rgb(var(--tw-paper));
+  font-size: var(--tw-text-sm);
+  border-radius: 50%;
+}
+
+.tw-cat-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgb(var(--tw-paper));
+  border: var(--tw-border-thin);
+  cursor: pointer;
+  transition: all var(--tw-transition-quick);
+}
+
+.tw-cat-toggle:hover {
+  background: rgb(var(--tw-ink));
+  color: rgb(var(--tw-paper));
+}
+
+.tw-cat-columns {
+  display: grid;
+  grid-template-columns: 50px 1fr 280px;
+  gap: var(--tw-space-md);
+  padding: var(--tw-space-sm) var(--tw-space-md);
+  background: rgb(var(--tw-ink));
+  color: rgb(var(--tw-paper));
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tw-col-icon {
+  text-align: center;
+}
+
+.tw-cat-body {
+  background: rgb(var(--tw-paper));
+}
+
+.tw-cat-footer {
+  height: 4px;
+  background: linear-gradient(90deg,
+    rgb(var(--tw-accent-3)),
+    rgb(var(--tw-accent-2)),
+    rgb(var(--tw-accent-1)));
+}
+
+/* --- SUBFORUM HEADERS (tw-subforum-*) --- */
+.tw-subforum {
+  margin: var(--tw-space-md);
+  border: var(--tw-border-thin);
+  background: rgb(var(--tw-paper-alt));
+  box-shadow: inset 2px 2px 0 rgba(0,0,0,0.05);
+}
+
+.tw-subforum-header {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-sm);
+  background: rgb(var(--tw-paper-dark));
+  padding: var(--tw-space-sm) var(--tw-space-md);
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-body);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: var(--tw-border-thin);
+}
+
+.tw-subforum-icon {
+  color: rgb(var(--tw-accent-1));
+}
+
+.tw-subforum-columns {
+  display: grid;
+  grid-template-columns: 50px 1fr 280px;
+  gap: var(--tw-space-md);
+  padding: var(--tw-space-xs) var(--tw-space-md);
+  background: rgba(var(--tw-ink), 0.9);
+  color: rgb(var(--tw-paper));
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tw-subforum-body {
+  background: rgb(var(--tw-paper));
+}
+
+/* --- BOARD STATS (tw-stats-*) --- */
+.tw-stats {
+  margin-top: var(--tw-space-lg);
+  border: var(--tw-border-comic);
+  overflow: hidden;
+  box-shadow: var(--tw-panel-shadow);
+}
+
+.tw-stats-header {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-sm);
+  background: rgb(var(--tw-paper-alt));
+  padding: var(--tw-space-md) var(--tw-space-lg);
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-lg);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgb(var(--tw-ink));
+  border-bottom: var(--tw-border-thin);
+}
+
+.tw-stats-icon {
+  color: rgb(var(--tw-pop-yellow));
+}
+
+.tw-stats-body {
+  background: rgb(var(--tw-paper));
+}
+
+.tw-stats-online {
+  display: flex;
+  align-items: center;
+  gap: var(--tw-space-sm);
+  flex-wrap: wrap;
+  padding: var(--tw-space-md);
+  background: rgb(var(--tw-paper-dark));
+  font-family: var(--tw-font-comic);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tw-stats-live {
+  color: rgb(var(--tw-pop-red));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.tw-stats-breakdown {
+  color: rgb(var(--tw-ink-muted));
+  font-size: var(--tw-text-sm);
+}
+
+.tw-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--tw-space-md);
+  padding: var(--tw-space-lg);
+}
+
+.tw-stat-card {
+  text-align: center;
+  padding: var(--tw-space-md);
+  background: rgb(var(--tw-paper-alt));
+  border: var(--tw-border-thin);
+  transition: all var(--tw-transition-quick);
+}
+
+.tw-stat-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0 rgb(var(--tw-ink));
+}
+
+.tw-stat-num {
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-xl);
+  color: rgb(var(--tw-accent-1));
+  line-height: 1;
+  margin-bottom: var(--tw-space-xs);
+}
+
+.tw-stat-label {
+  font-size: var(--tw-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(var(--tw-ink-muted));
+}
+
+.tw-stat-newest {
+  background: linear-gradient(135deg,
+    rgba(var(--tw-pop-yellow), 0.1),
+    rgba(var(--tw-pop-yellow), 0.2));
+}
+
+.tw-stat-member {
+  font-family: var(--tw-font-body);
+  font-size: var(--tw-text-body);
+  margin-top: var(--tw-space-xs);
+}
+
+.tw-stat-member a {
+  color: rgb(var(--tw-accent-1));
+}
+
+.tw-stats-users {
+  padding: var(--tw-space-md);
+  border-top: var(--tw-border-thin);
+  font-size: var(--tw-text-sm);
+}
+
+.tw-stats-users-label {
+  font-family: var(--tw-font-comic);
+  font-size: var(--tw-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgb(var(--tw-ink-muted));
+  margin-bottom: var(--tw-space-xs);
+}
+
+.tw-stats-users-list {
+  color: rgb(var(--tw-ink-muted));
+  line-height: 1.8;
+}
+
+.tw-stats-users-list a {
+  color: rgb(var(--tw-accent-1));
+  margin-right: var(--tw-space-sm);
+}
+
+/* =15. RESPONSIVE
 ============================================================================= */
 @media (max-width: 900px) {
   .tw-hero-grid {
@@ -1179,6 +1664,30 @@ pre, .codemain {
     flex-direction: column;
     text-align: center;
   }
+
+  /* Template Components - Tablet */
+  .tw-fr-main {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .tw-fr-lastpost {
+    grid-column: span 2;
+    margin-top: var(--tw-space-sm);
+  }
+
+  .tw-cat-columns,
+  .tw-subforum-columns {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .tw-col-activity {
+    display: none;
+  }
+
+  .tw-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -1192,5 +1701,60 @@ pre, .codemain {
 
   .tw-main {
     padding: var(--tw-space-md);
+  }
+
+  /* Template Components - Mobile */
+  .tw-fr-main {
+    grid-template-columns: 1fr;
+    gap: var(--tw-space-sm);
+  }
+
+  .tw-fr-icon {
+    display: none;
+  }
+
+  .tw-fr-lastpost {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tw-fr-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tw-fr-stats {
+    flex-wrap: wrap;
+    gap: var(--tw-space-sm);
+  }
+
+  .tw-cat-columns,
+  .tw-subforum-columns {
+    display: none;
+  }
+
+  .tw-cat-title {
+    font-size: var(--tw-text-body);
+  }
+
+  .tw-cat-issue {
+    min-width: 28px;
+    height: 28px;
+    font-size: var(--tw-text-xs);
+  }
+
+  .tw-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--tw-space-md);
+    gap: var(--tw-space-sm);
+  }
+
+  .tw-stat-num {
+    font-size: var(--tw-text-lg);
+  }
+
+  .tw-subforum {
+    margin: var(--tw-space-sm);
   }
 }

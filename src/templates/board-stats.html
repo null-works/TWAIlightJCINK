@@ -1,30 +1,53 @@
 <!-- BOARD STATS
      Jcink variables: total_users, total_guests, total_mems,
-     total_posts, total_mem_reg, newest_member
+     total_posts, total_topics, total_mem_reg, newest_member,
+     active_users (list of online users)
+
+     Comic dashboard style - stat panels with POW badges
 -->
 
-<div class="tableborder tw-board-stats" id="boardstats">
-  <div class="maintitle tw-board-stats-header">Board Statistics</div>
-  <div class="tw-board-stats-body">
-    <div class="tw-stats-active pformstrip">
-      <!-- |total_users| --> user(s) active in the past 15 minutes
+<div class="tw-stats tableborder" id="boardstats">
+  <!-- Stats Header -->
+  <div class="tw-stats-header maintitle">
+    <span class="tw-stats-icon">&#9733;</span>
+    Board Statistics
+  </div>
+
+  <!-- Main Stats Grid -->
+  <div class="tw-stats-body">
+    <!-- Online Now Panel -->
+    <div class="tw-stats-online pformstrip">
+      <span class="tw-stats-live">&#9679;</span>
+      <strong><!-- |total_users| --></strong> user(s) active
+      <span class="tw-stats-breakdown">
+        (<strong><!-- |total_guests| --></strong> guests, <strong><!-- |total_mems| --></strong> members)
+      </span>
     </div>
-    <div class="tw-stats-breakdown row4">
-      Active: <strong><!-- |total_guests| --></strong> guests, <strong><!-- |total_mems| --></strong> members
+
+    <!-- Stats Cards -->
+    <div class="tw-stats-grid row4">
+      <div class="tw-stat-card">
+        <div class="tw-stat-num"><!-- |total_posts| --></div>
+        <div class="tw-stat-label">Total Posts</div>
+      </div>
+      <div class="tw-stat-card">
+        <div class="tw-stat-num"><!-- |total_topics| --></div>
+        <div class="tw-stat-label">Topics</div>
+      </div>
+      <div class="tw-stat-card">
+        <div class="tw-stat-num"><!-- |total_mem_reg| --></div>
+        <div class="tw-stat-label">Members</div>
+      </div>
+      <div class="tw-stat-card tw-stat-newest">
+        <div class="tw-stat-label">Newest Member</div>
+        <div class="tw-stat-member"><!-- |newest_member| --></div>
+      </div>
     </div>
-    <div class="tw-stats-totals row4">
-      <div class="tw-stat-item">
-        <span class="tw-stat-label">Total Posts</span>
-        <span class="tw-stat-value"><!-- |total_posts| --></span>
-      </div>
-      <div class="tw-stat-item">
-        <span class="tw-stat-label">Members</span>
-        <span class="tw-stat-value"><!-- |total_mem_reg| --></span>
-      </div>
-      <div class="tw-stat-item">
-        <span class="tw-stat-label">Newest</span>
-        <span class="tw-stat-value"><!-- |newest_member| --></span>
-      </div>
+
+    <!-- Online Users List -->
+    <div class="tw-stats-users row4">
+      <div class="tw-stats-users-label">Online Today:</div>
+      <div class="tw-stats-users-list"><!-- |active_users| --></div>
     </div>
   </div>
 </div>
