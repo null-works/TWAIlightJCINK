@@ -29,9 +29,9 @@
   --tw-pop-blue: 100, 149, 237;
 
   /* Typography */
-  --tw-font-comic: "Bangers", "Impact", cursive;
-  --tw-font-body: "Patrick Hand", "Comic Sans MS", cursive;
-  --tw-font-sans: "Inter", -apple-system, sans-serif;
+  --tw-font-comic: "Permanent Marker", cursive;
+  --tw-font-body: Verdana, sans-serif;
+  --tw-font-accent: "Source Code Pro", monospace;
   --tw-font-mono: "Courier New", monospace;
 
   /* Font Sizes */
