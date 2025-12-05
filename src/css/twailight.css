@@ -29,7 +29,7 @@
   --tw-pop-blue: 100, 149, 237;
 
   /* Typography */
-  --tw-font-comic: "Permanent Marker", cursive;
+  --tw-font-title: Verdana, sans-serif;
   --tw-font-body: Verdana, sans-serif;
   --tw-font-accent: "Source Code Pro", monospace;
   --tw-font-mono: "Courier New", monospace;
@@ -193,10 +193,8 @@ img {
 /* =04. TYPOGRAPHY
 ============================================================================= */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--tw-font-comic);
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-family: var(--tw-font-title);
+  font-weight: bold;
   color: rgb(var(--tw-ink));
 }
 
@@ -334,10 +332,10 @@ a:hover {
 }
 
 .tw-hero-title {
-  font-family: var(--tw-font-comic);
+  font-family: var(--tw-font-title);
   font-size: var(--tw-text-hero);
   line-height: 0.9;
-  text-transform: uppercase;
+  font-weight: bold;
   color: rgb(var(--tw-ink));
   text-shadow:
     3px 3px 0 rgb(var(--tw-paper)),
@@ -396,10 +394,7 @@ a:hover {
   padding: 0 var(--tw-space-md);
   background: rgba(var(--tw-paper), 0.95);
   border-top: var(--tw-border-thin);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   display: flex;
   align-items: center;
 }
@@ -423,10 +418,7 @@ a:hover {
 .tw-nav a {
   display: inline-block;
   padding: var(--tw-space-sm) var(--tw-space-md);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 2px;
   color: rgb(var(--tw-paper));
   background: transparent;
   border: 2px solid transparent;
@@ -465,10 +457,7 @@ button, .button, input[type="submit"], input[type="button"] {
   justify-content: center;
   gap: var(--tw-space-xs);
   padding: var(--tw-space-sm) var(--tw-space-lg);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: rgb(var(--tw-paper));
   background: rgb(var(--tw-ink));
   border: var(--tw-border-thin);
@@ -603,10 +592,8 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: bold;
   color: rgb(var(--tw-accent-1));
   background: rgb(var(--tw-paper-alt));
   padding: var(--tw-space-md) var(--tw-space-lg);
@@ -634,10 +621,7 @@ textarea {
 .catbg {
   background: rgb(var(--tw-ink));
   color: rgb(var(--tw-paper));
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   padding: var(--tw-space-sm) var(--tw-space-md);
 }
 
@@ -655,9 +639,8 @@ textarea {
 }
 
 .titlemedium {
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-md);
-  text-transform: uppercase;
+  font-weight: bold;
   padding: var(--tw-space-sm) var(--tw-space-md);
   background: rgb(var(--tw-paper-alt));
   border-bottom: var(--tw-border-thin);
@@ -708,9 +691,7 @@ textarea {
 .pformstrip {
   background: rgb(var(--tw-paper-dark));
   padding: var(--tw-space-sm) var(--tw-space-md);
-  font-family: var(--tw-font-comic);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: bold;
   border-bottom: var(--tw-border-thin);
 }
 
@@ -746,10 +727,8 @@ textarea {
   align-items: center;
   background: rgb(var(--tw-paper-alt));
   padding: var(--tw-space-md) var(--tw-space-lg);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: bold;
   color: rgb(var(--tw-accent-1));
   border-bottom: var(--tw-border-thin);
 }
@@ -765,10 +744,7 @@ textarea {
   background: rgb(var(--tw-ink));
   color: rgb(var(--tw-paper));
   padding: var(--tw-space-sm) var(--tw-space-md);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 /* Forum Row */
@@ -836,10 +812,8 @@ textarea {
 .tw-board-stats-header {
   background: rgb(var(--tw-paper-alt));
   padding: var(--tw-space-md) var(--tw-space-lg);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: bold;
   color: rgb(var(--tw-ink));
   border-bottom: var(--tw-border-thin);
 }
@@ -860,7 +834,7 @@ textarea {
 
 .tw-stats-number {
   display: block;
-  font-family: var(--tw-font-comic);
+  font-family: var(--tw-font-title);
   font-size: var(--tw-text-lg);
   color: rgb(var(--tw-accent-1));
 }
@@ -868,7 +842,6 @@ textarea {
 .tw-stats-label {
   font-size: var(--tw-text-xs);
   color: rgb(var(--tw-ink-muted));
-  text-transform: uppercase;
 }
 
 .tw-stats-online {
@@ -952,7 +925,7 @@ blockquote, .quotemain {
 
 blockquote::before {
   content: '"';
-  font-family: var(--tw-font-comic);
+  font-family: var(--tw-font-title);
   font-size: 60px;
   color: rgba(var(--tw-accent-1), 0.2);
   position: absolute;
@@ -1002,10 +975,8 @@ pre, .codemain {
 .tw-stamp {
   display: inline-block;
   padding: var(--tw-space-xs) var(--tw-space-sm);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: bold;
   color: rgb(var(--tw-pop-red));
   border: 2px solid rgb(var(--tw-pop-red));
   transform: rotate(-5deg);
@@ -1036,7 +1007,7 @@ pre, .codemain {
 .tw-pow {
   display: inline-block;
   padding: var(--tw-space-sm) var(--tw-space-md);
-  font-family: var(--tw-font-comic);
+  font-family: var(--tw-font-title);
   font-size: var(--tw-text-lg);
   color: rgb(var(--tw-ink));
   background: rgb(var(--tw-pop-yellow));
@@ -1066,7 +1037,7 @@ pre, .codemain {
   background: rgb(var(--tw-paper));
   color: rgb(var(--tw-ink));
   border: var(--tw-border-thin);
-  font-family: var(--tw-font-comic);
+  font-family: var(--tw-font-title);
 }
 
 .pagination a:hover, .pagelink a:hover {
@@ -1179,9 +1150,9 @@ pre, .codemain {
 }
 
 .tw-fr-title {
-  font-family: var(--tw-font-comic);
+  font-family: var(--tw-font-title);
   font-size: var(--tw-text-md);
-  letter-spacing: 1px;
+  font-weight: bold;
   margin-bottom: var(--tw-space-xs);
 }
 
@@ -1277,9 +1248,7 @@ pre, .codemain {
     rgba(var(--tw-accent-1), 0.1),
     rgba(var(--tw-accent-2), 0.1));
   border-top: 1px solid rgba(var(--tw-ink), 0.1);
-  font-family: var(--tw-font-comic);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: var(--tw-text-sm);
 }
 
 .tw-fr-stat {
@@ -1316,10 +1285,7 @@ pre, .codemain {
 }
 
 .tw-fr-subs-label {
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: rgb(var(--tw-ink-faint));
   margin-bottom: var(--tw-space-xs);
 }
@@ -1378,10 +1344,8 @@ pre, .codemain {
   display: flex;
   align-items: center;
   gap: var(--tw-space-sm);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: bold;
 }
 
 .tw-cat-title a {
@@ -1424,10 +1388,7 @@ pre, .codemain {
   padding: var(--tw-space-sm) var(--tw-space-md);
   background: rgb(var(--tw-ink));
   color: rgb(var(--tw-paper));
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .tw-col-icon {
@@ -1460,10 +1421,8 @@ pre, .codemain {
   gap: var(--tw-space-sm);
   background: rgb(var(--tw-paper-dark));
   padding: var(--tw-space-sm) var(--tw-space-md);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-body);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: bold;
   border-bottom: var(--tw-border-thin);
 }
 
@@ -1478,10 +1437,7 @@ pre, .codemain {
   padding: var(--tw-space-xs) var(--tw-space-md);
   background: rgba(var(--tw-ink), 0.9);
   color: rgb(var(--tw-paper));
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .tw-subforum-body {
@@ -1502,10 +1458,8 @@ pre, .codemain {
   gap: var(--tw-space-sm);
   background: rgb(var(--tw-paper-alt));
   padding: var(--tw-space-md) var(--tw-space-lg);
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-lg);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: bold;
   color: rgb(var(--tw-ink));
   border-bottom: var(--tw-border-thin);
 }
@@ -1525,9 +1479,6 @@ pre, .codemain {
   flex-wrap: wrap;
   padding: var(--tw-space-md);
   background: rgb(var(--tw-paper-dark));
-  font-family: var(--tw-font-comic);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .tw-stats-live {
@@ -1566,8 +1517,8 @@ pre, .codemain {
 }
 
 .tw-stat-num {
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-xl);
+  font-weight: bold;
   color: rgb(var(--tw-accent-1));
   line-height: 1;
   margin-bottom: var(--tw-space-xs);
@@ -1575,8 +1526,6 @@ pre, .codemain {
 
 .tw-stat-label {
   font-size: var(--tw-text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: rgb(var(--tw-ink-muted));
 }
 
@@ -1603,10 +1552,7 @@ pre, .codemain {
 }
 
 .tw-stats-users-label {
-  font-family: var(--tw-font-comic);
   font-size: var(--tw-text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: rgb(var(--tw-ink-muted));
   margin-bottom: var(--tw-space-xs);
 }
