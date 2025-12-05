@@ -1,30 +1,14 @@
-<!-- BOARD STATS
-     Jcink variables: total_users, total_guests, total_mems,
-     total_posts, total_topics, total_mem_reg, newest_member,
-     active_users (list of online users)
-
-     Comic dashboard style - stat panels with POW badges
--->
-
 <div class="tw-stats tableborder" id="boardstats">
-  <!-- Stats Header -->
   <div class="tw-stats-header maintitle">
     <span class="tw-stats-icon">&#9733;</span>
     Board Statistics
   </div>
-
-  <!-- Main Stats Grid -->
   <div class="tw-stats-body">
-    <!-- Online Now Panel -->
     <div class="tw-stats-online pformstrip">
       <span class="tw-stats-live">&#9679;</span>
       <strong><!-- |total_users| --></strong> user(s) active
-      <span class="tw-stats-breakdown">
-        (<strong><!-- |total_guests| --></strong> guests, <strong><!-- |total_mems| --></strong> members)
-      </span>
+      <span class="tw-stats-breakdown">(<strong><!-- |total_guests| --></strong> guests, <strong><!-- |total_mems| --></strong> members)</span>
     </div>
-
-    <!-- Stats Cards -->
     <div class="tw-stats-grid row4">
       <div class="tw-stat-card">
         <div class="tw-stat-num"><!-- |total_posts| --></div>
@@ -43,8 +27,6 @@
         <div class="tw-stat-member"><!-- |newest_member| --></div>
       </div>
     </div>
-
-    <!-- Online Users List -->
     <div class="tw-stats-users row4">
       <div class="tw-stats-users-label">Online Today:</div>
       <div class="tw-stats-users-list"><!-- |active_users| --></div>

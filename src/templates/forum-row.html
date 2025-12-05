@@ -1,29 +1,11 @@
-<!-- FORUM ROW
-     Jcink variables: forum_id, name, name_text, description, description_clean,
-     img_new_post, topics, replies, last_post, last_poster, last_poster_avatar_url,
-     last_topic, subforums, subforums_list, moderators, forum-new-post (class)
-
-     Comic panel layout: Main info left, avatar+last post right, stats bottom strip
--->
-
 <div class="tw-fr <!-- |forum-new-post| -->" id="forum-<!-- |forum_id| -->">
-  <!-- Main Content Area -->
   <div class="tw-fr-main">
-    <!-- Forum Icon / New Post Indicator -->
-    <div class="tw-fr-icon">
-      <!-- |img_new_post| -->
-    </div>
-
-    <!-- Forum Info Block -->
+    <div class="tw-fr-icon"><!-- |img_new_post| --></div>
     <div class="tw-fr-info">
       <div class="tw-fr-title"><!-- |name| --></div>
       <div class="tw-fr-desc"><!-- |description| --></div>
-      <div class="tw-fr-meta">
-        <span class="tw-fr-mods"><!-- |moderators| --></span>
-      </div>
+      <div class="tw-fr-meta"><span class="tw-fr-mods"><!-- |moderators| --></span></div>
     </div>
-
-    <!-- Last Post Panel (Comic Inset) -->
     <div class="tw-fr-lastpost">
       <div class="tw-fr-avatar" style="background-image: url(<!-- |last_poster_avatar_url| -->);"></div>
       <div class="tw-fr-lastinfo">
@@ -35,21 +17,11 @@
       </div>
     </div>
   </div>
-
-  <!-- Stats Strip (Bottom Bar) -->
   <div class="tw-fr-stats">
-    <div class="tw-fr-stat">
-      <span class="tw-fr-num"><!-- |topics| --></span>
-      <span class="tw-fr-label">topics</span>
-    </div>
+    <div class="tw-fr-stat"><span class="tw-fr-num"><!-- |topics| --></span><span class="tw-fr-label">topics</span></div>
     <span class="tw-fr-divider">&#9733;</span>
-    <div class="tw-fr-stat">
-      <span class="tw-fr-num"><!-- |replies| --></span>
-      <span class="tw-fr-label">replies</span>
-    </div>
+    <div class="tw-fr-stat"><span class="tw-fr-num"><!-- |replies| --></span><span class="tw-fr-label">replies</span></div>
   </div>
-
-  <!-- Subforums Drawer (if any) -->
   <div class="tw-fr-subs">
     <div class="tw-fr-subs-label">&#9733; subforums</div>
     <div class="tw-fr-subs-list"><!-- |subforums_list| --></div>
